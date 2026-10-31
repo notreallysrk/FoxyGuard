@@ -150,7 +150,7 @@ async def reload_admins(_, m: Message):
     return
 
 
-@app.on_message(filters.regex(r"^(?i)@admin(s)?") & filters.group)
+@app.on_message(filters.regex(r"(?i)^@admin(s)?") & filters.group)
 async def tag_admins(_, m: Message):
     db = Reporting(m.chat.id)
     if not db.get_settings():

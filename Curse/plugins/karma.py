@@ -18,7 +18,7 @@ karma_negative_group = 4
     & filters.incoming
     & filters.reply
     & filters.regex(
-        r"^((?i)\+|\+\+|\+1|\+69|thx|thanx|thanks||||||||cool|good||baby|thankyou|love|pro)$"
+        r"(?i)^(\+|\+\+|\+1|\+69|thx|thanx|thanks||||||||cool|good||baby|thankyou|love|pro)$"
     )
     & ~filters.via_bot
     & ~filters.bot,
@@ -55,7 +55,9 @@ async def upvote(_, message):
     & filters.group
     & filters.incoming
     & filters.reply
-    & filters.regex(r"^(\-|\-\-|\-1|||noob|weak|fuck off|nub|gey|kid|shit|mf)$")
+    & filters.regex(
+        r"^(\-|\-\-|\-1|||noob|weak|fuck off|nub|gey|kid|shit|mf)$"
+    )
     & ~filters.via_bot
     & ~filters.bot,
     group=karma_negative_group,
@@ -153,6 +155,7 @@ async def karma_toggle_xd(_, message):
     else:
         await message.reply_text(usage)
 
+
 __PLUGIN__ = "Karma"
 __HELP__ = """
 Karma :
@@ -163,4 +166,3 @@ Karma :
 •/karma:- reply to a user to check that user's karma points.
 •/karmastat:- send without replying to any message to check karma point list of top 10.
 """
-
